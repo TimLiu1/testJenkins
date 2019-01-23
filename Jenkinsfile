@@ -13,7 +13,7 @@ pipeline {
             deleteDir()
         }
         success{
-            echo 'I successed'
+            echo 'I  successed'
         }
         unstable {
             echo 'I am unstable'
