@@ -1,13 +1,28 @@
 pipeline {
-    agent {
-        docker { image 'node:7-alpine' }
-    }
+    agent   any
     stages {
-        stage('Test') {
+        stage('No-op'){
             steps {
-                sh 'echo "Hello 2tim...3......."'
-                sh 'node ./index.js'
+                sh 'ls'
             }
+        }
+    }
+    post{
+        always{
+            echo 'One way or another, I have finished'
+            deleteDir()
+        }
+        success{
+            echo 'I successed'
+        }
+        unstable{
+            echo 'I am unstable'
+        }
+        failure {
+            echo 'I failed'
+        }
+        change{
+            echo 'Things were different before...'
         }
     }
 }
