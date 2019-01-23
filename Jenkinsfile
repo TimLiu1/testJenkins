@@ -1,27 +1,27 @@
 pipeline {
-    agent   any
+    agent any
     stages {
-        stage('No-op'){
+        stage('No-op') {
             steps {
                 sh 'ls'
             }
         }
     }
     post{
-        always{
+        always {
             echo 'One way or another, I have finished'
             deleteDir()
         }
         success{
             echo 'I successed'
         }
-        unstable{
+        unstable {
             echo 'I am unstable'
         }
         failure {
             echo 'I failed'
         }
-        change{
+        change {
             echo 'Things were different before...'
         }
     }
