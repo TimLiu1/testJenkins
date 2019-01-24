@@ -13,9 +13,9 @@ pipeline {
         }
         stage('Deliver') { 
             steps {
-                sh './deploy.sh' 
+                sh 'chmod +x ./deploy.sh && ./deploy.sh' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh './jenkins/scripts/kill.sh' 
+                sh './kill.sh' 
             }
         }
     }
