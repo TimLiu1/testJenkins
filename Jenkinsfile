@@ -5,18 +5,21 @@ pipeline {
             args '-p 3000:3000'
         }
     }
+    environment { 
+        CI = 'true'
+    }
     stages {
         stage('Build') {
             steps {
                 sh 'npm install'
             }
         }
-            stage('Deliver') { 
-             steps {
-                sh 'chmod +x ./deploy.sh && ./deploy.sh' 
-                input message: 'Finished using the web site? (Click "Proceed" to continue)' 
-                sh 'chmod +x ./deploy.sh && ./kill.sh' 
-               }
+        stage('Deliver'){
+            steps:{
+                sh 'chmod -x ./deploy.sh'
+                input message: 'Finished using the web site? (Click "proceed" to continue)'
+                sh 'chmod -x ./kill.sh'
+            }
         }
     }
 }
