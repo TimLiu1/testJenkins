@@ -16,9 +16,9 @@ pipeline {
         }
         stage('Deliver'){
             steps:{
-                sh 'chmod -x ./deploy.sh'
+                sh 'chmod -x ./deploy.sh && ./deploy.sh'
                 input message: 'Finished using the web site? (Click "proceed" to continue)'
-                sh 'chmod -x ./kill.sh'
+                sh 'chmod -x ./kill.sh && ./kill.sh'
             }
         }
     }
