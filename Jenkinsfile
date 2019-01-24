@@ -11,12 +11,12 @@ pipeline {
                 sh 'npm install'
             }
         }
-        stage('Deliver') { 
-            steps {
+            stage('Deliver') { 
+             steps {
                 sh 'chmod +x ./deploy.sh && ./deploy.sh' 
                 input message: 'Finished using the web site? (Click "Proceed" to continue)' 
                 sh 'chmod +x ./deploy.sh && ./kill.sh' 
-            }
+               }
         }
     }
 }
