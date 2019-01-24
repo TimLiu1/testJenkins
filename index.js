@@ -2,7 +2,7 @@ const http = require('http');
 
 
 
-http.createServer(app).listen(8000,()=>{console.log(`server listen on 8080`)})
+http.createServer(app).listen(3000,()=>{console.log(`server listen on 3000`)})
 
 
 function app(req, res) {
